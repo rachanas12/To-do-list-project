@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/60d95acc62.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <form action="/task" method="post" class="create">
+        <h1>Task Manager</h1>
+        <label for="task">Enter Task : </label>
+        <input type="text" name="task" id="task"><br>
+        
+        <button type="submit">Create task</button>
+    </form><br><br>
+<table>
+    <h2>List of Tasks</h2>
+    <tr>
+    <th>Task</th>
+    
+    <th>Update</th>
+    <th>Delete</th>
+</tr>
+<% tasks.forEach((task)=>{%>
+<tr>
+    <td><%= task.task%></td>
+    
+    <td><a href="/task/<%=task._id%>"><i class="fa-solid fa-pen-to-square"></i></a></td>
+    <td>
+        <form action="/task/<%=task._id%>?_method=DELETE" method="post">
+            <button type="submit" class="delete"><i class="fa-solid fa-trash"></i></button>
+        </form>
+    </td>
+    
+</tr>
+<%})%>
+</table>
+</body>
+</html>
